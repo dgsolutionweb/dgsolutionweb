@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DGSolution WEB - Desenvolvimento de soluções web personalizadas, cartões digitais e sistemas web em Guaíra, SP">
+    <meta name="keywords" content="desenvolvimento web, cartões digitais, landing pages, sistemas web, Guaíra">
+    <meta name="author" content="DGSolution WEB">
+    <title>DGSolution WEB - Soluções em Tecnologia</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --accent-color: #3b82f6;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Section Styling */
+        .section-modern {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .service-btn {
+            margin-top: auto;
+            width: 100%;
+            padding: 0.75rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg-primary-subtle {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+
+        /* Portfolio Items */
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-content {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Tech Stack */
+        .tech-stack-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-stack-item:hover {
+            border-color: var(--primary-color);
+        }
+
+        /* Contact Form */
+        .form-control {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .form-control:focus {
+            background: var(--card-bg);
+            border-color: var(--primary-color);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+        }
+
+        .form-floating > label {
+            color: var(--text-muted);
+        }
+
+        /* Buttons */
+        .btn-modern {
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-modern-primary {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-modern-primary:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-modern-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-modern-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--card-bg);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-title {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .social-link {
+            background: var(--dark-bg);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+        }
+
+        /* Badges */
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .bg-primary-subtle {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--card-bg);
+            padding: 1rem 0;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--card-bg) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .service-card,
+            .portfolio-item {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Tech Stack Section Styling */
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+        }
+
+        .tech-stack-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-stack-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-stack-item i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-stack-item span {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-stack-item:hover span {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .tech-stack-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 1rem;
+            }
+
+            .tech-stack-item {
+                padding: 1.5rem;
+            }
+
+            .tech-stack-item i {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Tech Stack Section Styling */
+        .tech-stack-container {
+            overflow: hidden;
+            padding: 2rem 0;
+            background: var(--card-bg);
+            border-radius: 20px;
+        }
+
+        .tech-stack-scroll {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .tech-stack-wrapper {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+        }
+
+        .tech-stack-item {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            margin: 0 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+
+        .tech-stack-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-stack-item i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-stack-item span {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-stack-item:hover span {
+            color: var(--text-primary);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Ensure smooth animation */
+        @media (prefers-reduced-motion: reduce) {
+            .tech-stack-wrapper {
+                animation-duration: 60s;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tech-stack-item {
+                padding: 1.5rem;
+                min-width: 120px;
+            }
+
+            .tech-stack-item i {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Contact Section Styling */
+        .contact-section {
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 0;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-info-side {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            padding: 4rem;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .contact-info-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .contact-shape-1,
+        .contact-shape-2 {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .contact-shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .contact-shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .contact-info-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact-info-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            width: fit-content;
+        }
+
+        .contact-info-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-box {
+            text-align: left;
+        }
+
+        .info-box h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: white;
+        }
+
+        .info-box p, 
+        .info-box a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .info-box a:hover {
+            color: white;
+        }
+
+        .contact-social {
+            text-align: center;
+        }
+
+        .contact-social h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info-side {
+                padding: 2rem;
+            }
+
+            .contact-info-title {
+                font-size: 2rem;
+            }
+
+            .contact-info-item {
+                width: 100%;
+            }
+
+            .icon-box {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .info-box h4 {
+                font-size: 1.1rem;
+            }
+
+            .info-box p,
+            .info-box a {
+                font-size: 1rem;
+            }
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-form:hover {
+            border-color: var(--primary-color);
+        }
+
+        .contact-form .form-control {
+            background: var(--dark-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .contact-form .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+        }
+
+        .contact-form .form-floating > label {
+            color: var(--text-muted);
+        }
+
+        .contact-form .form-floating > .form-control:focus ~ label,
+        .contact-form .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            color: var(--primary-color);
+        }
+
+        .skip-nav {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-nav:focus {
+            top: 0;
+        }
+
+        /* Logo Styling */
+        .navbar-brand {
+            padding: 0;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-text-header {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: -2px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .logo-text-web {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: -2px;
+            padding-left: 2px;
+        }
+
+        /* Add this to your existing styles */
+        .navbar-brand:hover .logo-text-header {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .navbar-brand:hover .logo-text-web {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-nav">Pular para o conteúdo principal</a>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation" aria-label="Navegação principal">
+        <div class="container">
+            <a class="navbar-brand" href="#" aria-label="DGSolution WEB">
+                <div class="logo-container">
+                    <div class="logo-text-header">DGSolution</div>
+                    <div class="logo-text-web">WEB</div>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio" aria-current="page">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfólio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section" id="inicio">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <h1 class="hero-title">
+                            Transforme sua presença digital com a
+                            <span class="text-gradient">DGSolution WEB</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Desenvolvemos soluções web personalizadas para impulsionar 
+                            seu negócio no mundo digital.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="#portfolio" class="btn btn-modern btn-modern-primary me-3">
+                                <i class="fas fa-project-diagram me-2"></i>Ver Projetos
+                            </a>
+                            <a href="#contato" class="btn btn-modern btn-modern-outline">
+                                <i class="fas fa-paper-plane me-2"></i>Fale Conosco
+                            </a>
+                        </div>
+                        <div class="hero-features mt-5">
+                            <div class="hero-feature">
+                                <i class="fas fa-check-circle text-primary"></i>
+                                <span>Design Responsivo</span>
+                </div>
+                            <div class="hero-feature">
+                                <i class="fas fa-check-circle text-primary"></i>
+                                <span>Otimizado para SEO</span>
+                            </div>
+                            <div class="hero-feature">
+                                <i class="fas fa-check-circle text-primary"></i>
+                                <span>Suporte Contínuo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="section-modern bg-dark" id="portfolio">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Nosso Portfólio</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Conheça alguns dos nossos projetos de cartões digitais
+                    </p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="zoom-in">
+                        <div class="portfolio-item">
+                            <img src="img/port/caique.PNG" alt="Caique Martins" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-content">
+                                    <h4 class="text-white mb-3">Caique Martins</h4>
+                                    <p class="text-white-50 mb-3">Cartão Digital Profissional</p>
+                                    <a href="https://dgsolutionweb.github.io/caiquemartins/" target="_blank" class="btn btn-modern btn-modern-primary">
+                                        <i class="fas fa-external-link-alt me-2"></i>Ver Projeto
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="portfolio-item">
+                            <img src="img/port/aline.PNG" alt="Dra. Aline" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-content">
+                                    <h4 class="text-white mb-3">Dra. Aline</h4>
+                                    <p class="text-white-50 mb-3">Cartão Digital para Área da Saúde</p>
+                                    <a href="https://dgsolutionweb.github.io/draAline/" target="_blank" class="btn btn-modern btn-modern-primary">
+                                        <i class="fas fa-external-link-alt me-2"></i>Ver Projeto
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="portfolio-item">
+                            <img src="img/port/escarpas.PNG" alt="Escarpass Sushi Bar" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-content">
+                                    <h4 class="text-white mb-3">Escarpass Sushi Bar</h4>
+                                    <p class="text-white-50 mb-3">Cartão Digital Gastronômico</p>
+                                    <a href="https://dgsolutionweb.github.io/escarpassushibar/" target="_blank" class="btn btn-modern btn-modern-primary">
+                                        <i class="fas fa-external-link-alt me-2"></i>Ver Projeto
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="portfolio-item">
+                            <img src="img/port/show.PNG" alt="Show de Casa Guaíra" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-content">
+                                    <h4 class="text-white mb-3">Show de Casa Guaíra</h4>
+                                    <p class="text-white-50 mb-3">Cartão Digital para Entretenimento</p>
+                                    <a href="https://dgsolutionweb.github.io/showdecasaguaira/" target="_blank" class="btn btn-modern btn-modern-primary">
+                                        <i class="fas fa-external-link-alt me-2"></i>Ver Projeto
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="portfolio-item">
+                            <img src="img/port/livia.PNG" alt="Lívia Zanotelo" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-content">
+                                    <h4 class="text-white mb-3">Lívia Zanotelo</h4>
+                                    <p class="text-white-50 mb-3">Cartão Digital Personalizado</p>
+                                    <a href="https://dgsolutionweb.github.io/liviazanotelo/" target="_blank" class="btn btn-modern btn-modern-primary">
+                                        <i class="fas fa-external-link-alt me-2"></i>Ver Projeto
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section-modern" id="servicos">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Nossos Serviços</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Soluções personalizadas para impulsionar seu negócio
+                    </p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="fade-up">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3 class="service-title">Landing Pages</h3>
+                            <p class="service-description">
+                                Páginas otimizadas para converter visitantes em clientes, 
+                                com design moderno e responsivo.
+                            </p>
+                            <div class="service-features">
+                                <span class="badge bg-primary-subtle text-primary">
+                                    <i class="fas fa-mobile-alt me-1"></i>Responsivo
+                                </span>
+                                <span class="badge bg-primary-subtle text-primary">
+                                    <i class="fas fa-tachometer-alt me-1"></i>Otimizado
+                                </span>
+                            </div>
+                            <a href="#contato" class="btn btn-modern btn-modern-primary service-btn">
+                                Saiba mais
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <h3 class="service-title">Cartões Digitais</h3>
+                            <p class="service-description">
+                                Cartões de visita digitais interativos para impulsionar 
+                                sua presença profissional.
+                            </p>
+                            <div class="service-features">
+                                <span class="badge bg-primary-subtle text-primary">
+                                    <i class="fas fa-share-alt me-1"></i>Compartilhável
+                                </span>
+                                <span class="badge bg-primary-subtle text-primary">
+                                    <i class="fas fa-qrcode me-1"></i>QR Code
+                                </span>
+                            </div>
+                            <a href="#contato" class="btn btn-modern btn-modern-primary service-btn">
+                                Saiba mais
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3 class="service-title">Sistemas Web</h3>
+                            <p class="service-description">
+                                Desenvolvimento de sistemas personalizados para automatizar 
+                                e otimizar seus processos.
+                            </p>
+                            <div class="service-features">
+                                <span class="badge bg-primary-subtle text-primary">
+                                    <i class="fas fa-lock me-1"></i>Seguro
+                                </span>
+                                <span class="badge bg-primary-subtle text-primary">
+                                    <i class="fas fa-cloud me-1"></i>Cloud
+                                </span>
+                            </div>
+                            <a href="#contato" class="btn btn-modern btn-modern-primary service-btn">
+                                Saiba mais
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section-modern contact-section" id="contato">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Entre em Contato</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Vamos transformar suas ideias em realidade
+                    </p>
+                </div>
+                <div class="contact-container" data-aos="fade-up">
+                    <div class="contact-info-side">
+                        <div class="contact-info-content">
+                            <h3 class="contact-info-title">Informações de Contato</h3>
+                            <p class="contact-info-subtitle">
+                                Entre em contato conosco ou nos envie uma mensagem
+                            </p>
+                            
+                            <div class="contact-info-list">
+                                <div class="contact-info-item">
+                                    <div class="icon-box">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="info-box">
+                                        <h4>Localização</h4>
+                                        <p>Guaíra, SP</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info-item">
+                                    <div class="icon-box">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="info-box">
+                                        <h4>Telefone</h4>
+                                        <p><a href="tel:+5517999754390">(17) 99975-4390</a></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info-item">
+                                    <div class="icon-box">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="info-box">
+                                        <h4>Email</h4>
+                                        <p><a href="mailto:dgsolutionweb@gmail.com">dgsolutionweb@gmail.com</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact-social">
+                                <h4>Siga-nos</h4>
+                                <div class="social-links">
+                                    <a href="https://facebook.com/dgsolutionweb" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="https://instagram.com/dgsolutionweb" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://linkedin.com/company/dgsolutionweb" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="https://wa.me/5517999754390" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-shape-1"></div>
+                        <div class="contact-shape-2"></div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-lg-12">
+                            <form class="contact-form p-4 rounded" data-aos="fade-up">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="name" placeholder="Seu nome" required>
+                                            <label for="name">Nome completo</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="email" placeholder="Seu email" required>
+                                            <label for="email">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="subject" placeholder="Assunto" required>
+                                            <label for="subject">Assunto</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" id="message" placeholder="Sua mensagem" style="height: 150px" required></textarea>
+                                            <label for="message">Mensagem</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-modern btn-modern-primary w-100">
+                                            <i class="fas fa-paper-plane me-2"></i>Enviar Mensagem
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section class="section-modern bg-dark" id="tech-stack">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Tecnologias</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Ferramentas e tecnologias que utilizamos
+                    </p>
+                </div>
+                <div class="tech-stack-container" data-aos="fade-up">
+                    <div class="tech-stack-scroll">
+                        <div class="tech-stack-wrapper">
+                            <!-- Row 1 -->
+                            <div class="tech-stack-item">
+                                <i class="fab fa-html5" style="color: #E44D26;"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-css3-alt" style="color: #264DE4;"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-js" style="color: #F7DF1E;"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-bootstrap" style="color: #7952B3;"></i>
+                                <span>Bootstrap</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-react" style="color: #61DAFB;"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-node-js" style="color: #339933;"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-php" style="color: #777BB4;"></i>
+                                <span>PHP</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-python" style="color: #3776AB;"></i>
+                                <span>Python</span>
+                            </div>
+
+                            <!-- Repeat for infinite scroll -->
+                            <div class="tech-stack-item">
+                                <i class="fab fa-html5" style="color: #E44D26;"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-css3-alt" style="color: #264DE4;"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-js" style="color: #F7DF1E;"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-bootstrap" style="color: #7952B3;"></i>
+                                <span>Bootstrap</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-react" style="color: #61DAFB;"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-node-js" style="color: #339933;"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-php" style="color: #777BB4;"></i>
+                                <span>PHP</span>
+                            </div>
+                            <div class="tech-stack-item">
+                                <i class="fab fa-python" style="color: #3776AB;"></i>
+                                <span>Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarCollapse = document.getElementById('navbarNav');
+            const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Show/hide overlay with menu
+            navbarCollapse.addEventListener('show.bs.collapse', function () {
+                mobileOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+
+            navbarCollapse.addEventListener('hide.bs.collapse', function () {
+                mobileOverlay.classList.remove('show');
+                document.body.style.overflow = '';
+            });
+
+            // Close menu when clicking a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992) {
+                        bootstrap.Collapse.getInstance(navbarCollapse).hide();
+                    }
+                });
+            });
+
+            // Handle active state
+            const sections = document.querySelectorAll('section[id]');
+            
+            function setActiveLink() {
+                let scrollY = window.scrollY;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`.nav-link[href*=${sectionId}]`).classList.add('active');
+                    } else {
+                        document.querySelector(`.nav-link[href*=${sectionId}]`).classList.remove('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', setActiveLink);
+            setActiveLink();
+        });
+
+        // Contact Form WhatsApp Integration
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Format the message for WhatsApp
+            const whatsappMessage = `*Nova Mensagem de Contato*%0A%0A*Nome:* ${name}%0A*Email:* ${email}%0A*Assunto:* ${subject}%0A*Mensagem:* ${message}`;
+            
+            // Create WhatsApp URL with your number
+            const whatsappUrl = `https://wa.me/5517999754390?text=${whatsappMessage}`;
+            
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html> 
